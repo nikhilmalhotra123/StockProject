@@ -1,3 +1,9 @@
-import gettweets
+from gettweets import GetTweet
 
-gettweets.gettweets()
+# TODO: Implement universal logger
+def main():
+    tweet = Tweet()
+    tweet.authentication()
+    tweet.getTweetsBySearch("Microsoft", 5)
+
+main()
