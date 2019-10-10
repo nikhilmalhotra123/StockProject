@@ -1,0 +1,3 @@
+import gettweets
+
+gettweets.gettweets()
