@@ -1,9 +1,12 @@
-from gettweets import GetTweet
+from tweets import Tweets
+from stockdata import StockData
 
 # TODO: Implement universal logger
 def main():
-    tweet = Tweet()
-    tweet.authentication()
-    tweet.getTweetsBySearch("Microsoft", 5)
+    # tweets = Tweets()
+    # tweets.authentication()
+    # tweets.getTweetsBySearch("Microsoft", 5)
+    stockdata = StockData()
+    stockdata.getHistoricalDataByID('MSFT', "2018w-01-01", "2018-02-02")
 
 main()

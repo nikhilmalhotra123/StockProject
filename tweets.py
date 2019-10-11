@@ -4,7 +4,7 @@ import logging
 
 logging.basicConfig(level=logging.WARNING)
 
-class Tweet:
+class Tweets:
     def __init__(self):
         self.api = None
 
@@ -17,15 +17,11 @@ class Tweet:
             logging.info("Successfully authenticated with Twitter")
         except Exception as err:
             logging.error("Failed to authenticate with Twitter", str(err))
+            exit(1)
 
     def getTweetsBySearch(self, search, count):
-        # The search term you want to find
         query = search
-        # Language code (follows ISO 639-1 standards)
         language = "en"
-        # Calling the user_timeline function with our parameters
         results = self.api.search(q=query, lang=language, result_type='recent', count=count)
-        # foreach through all tweets pulled
         for tweet in results:
-           # printing the text stored inside the tweet object
            print(tweet.text)
