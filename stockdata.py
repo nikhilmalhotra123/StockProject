@@ -10,7 +10,7 @@ class StockData:
         print("init")
 
     """
-    startdate and enddate are in the form "YYY-MM-DD"
+    startdate and enddate are in the form "YYYY-MM-DD"
     data is a pandas dataframe
     """
     def getHistoricalDataByID(self, id, startdate, enddate, interval="1d"):
@@ -24,6 +24,7 @@ class StockData:
             exit(1)
         try:
             data = yf.download(id, startdate, enddate, interval=interval) # Data is a pandas dataframe
+            logging.info("Successfully fetched stock data")
         except Exception as err:
             logging.error("Failed to get historical data", str(err))
             exit(1)
@@ -32,7 +33,8 @@ class StockData:
 
     def getAllHistoricalDataByID(self, id):
         try:
-            data = yf.download(id, period='max') # Data is a pandas dataframe
+            data = yf.download(id, period='max', interval='1d') # Data is a pandas dataframe
+            logging.info("Successfully fetched all historical stock data")
         except Exception as err:
             logging.error("Failed to get all historical data", str(err))
             exit(1)
@@ -41,5 +43,6 @@ class StockData:
 
     def getLivePriceByID(self, id):
         # TODO: Check for valid stock id
+        # TODO: Check valid output value
         stock = yf.Ticker(id)
         return stock.info['regularMarketPrice']
