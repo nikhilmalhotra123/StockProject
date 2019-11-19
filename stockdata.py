@@ -7,7 +7,7 @@ logging.basicConfig(level=logging.WARNING)
 
 class StockData:
     def __init__(self):
-        print("init")
+        pass
 
     """
     startdate and enddate are in the form "YYYY-MM-DD"
